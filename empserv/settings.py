@@ -15,7 +15,7 @@ from pathlib import Path
 """  Comment  """
 
 
-# Создайте пути внутри проекта, как это: BASE_DIR / 'subdir'.
+# ОСНОВНАЯ ДИРЕКТОРИЯ Создайте пути внутри проекта, как это: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -34,12 +34,15 @@ ALLOWED_HOSTS = []
 # Определение приложения
 
 INSTALLED_APPS = [
+    'events.apps.EventsConfig',
+    #'blog',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
 ]
 
 MIDDLEWARE = [
@@ -124,3 +127,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_ROOT = BASE_DIR / 'media/'  # Основная папка для хранения файлов
+
+MEDIA_URL = '/media/' # 
