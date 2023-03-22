@@ -1,3 +1,7 @@
 from django.contrib import admin
+from.models import Events  # Импортируем наш класс Events
 
-# Register your models here.
+# Зарегистрируйте свои модели здесь.
+
+admin.site.register(Events) # Передаём нашу модель 
+
