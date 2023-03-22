@@ -39,6 +39,16 @@ def main_test (request):
 
 def reverse_test (request):
     user_text = request.GET['usertexttest']  #  В [] указываем ключ параметра который мы ищем.
+    # Ключ этот можно найти в  атрибуте  name  формы находящейся в html файле.
+    # В нашем случае в файле reverse_test.html (атрибут формы name="usertexttest")
+    
+    # Для проверки, чтобы видеть получаем мы эту информацию или нет можно
+    # написать следующую строку
+    test_get_text = request.GET['usertexttest']
+    print(test_get_text)
+    # Создаём переменную test_get_text и присвоим ей значение request.GET['usertexttest']
+    # print выводит значение test_get_text на консоль
+    #
     words = user_text.split() # Получаем список слов находящихся в переменной
     number_of_words = len(words) # Считаем количество слов
     reverse_text = user_text[::-1]
