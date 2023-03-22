@@ -37,6 +37,14 @@ def home_test (request):
 def main_test (request):
     return render(request, 'main_test.html')
 
+def reverse_test (request):
+    user_text = request.GET['usertexttest']  #  В [] указываем ключ параметра который мы ищем.
+    words = user_text.split() # Получаем список слов находящихся в переменной
+    number_of_words = len(words) # Считаем количество слов
+    reverse_text = user_text[::-1]
+    return render(request,'reverse_test.html', {'usertext':user_text,'reversedtext':reverse_text,})
+
+
 
 #
 #
