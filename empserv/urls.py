@@ -53,5 +53,5 @@ urlpatterns = [
     path('testtwo/', views.testtwo),
     path('home_test/', views.home_test),
     path('', views.main_test), 
-    path('reverse_test/', views.reverse_test, name='reverse_test'),
+    path('reverse_test/', views.reverse_test),
  ]

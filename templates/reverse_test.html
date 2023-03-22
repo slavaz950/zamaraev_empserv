@@ -10,14 +10,20 @@
 </head>
 <body>
     <center><h1>Тестовая страница Reverse!!!</h1></center>
+<Center><h3>Original Text{{number_of_words}} words</h3></Center>
+    <center>{{usertext}}</center> <!-- Указываем имя ключа (из views.py) в фигурных скобках  -->
+    <Center><h3>Reverse Text</h3></Center>
+    <center>{{reversedtext}}</center>
+
     <center><form><textarea cols="50" rows="10" name="usertexttest"></textarea>
 <!-- По атрибуту  name="usertexttest" по этому имени когда пользователь вводит какой-то текст и 
 нажимает на кнопку (в нашем случае "Reverse") мы получаем этот ключ в url в адресной строке браузера 
 и значения по этому ключу которые пользователь ввёл в эту форму.
 
 Для того чтобы получить эту информацию в файле views.py в целевой функции нужно набрать
-request.GET['usertexttest']
-
+request.GET['usertexttest']. Далее это значение передаётся в переменную user_text
+после этого значение этой переменной передаём ключу 'usertext'. После этого ключ в
+фигурных скобках {{   }}  размещаем в нужном месте страницы. (Образец СМ. выше')
 
 --> 
       <br><br>  

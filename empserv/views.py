@@ -37,29 +37,28 @@ def home_test (request):
 def main_test (request):
     return render(request, 'main_test.html')
 
-def reverse_test (request):
+def reverse_test(request):
     user_text = request.GET['usertexttest']  #  В [] указываем ключ параметра который мы ищем.
     # Ключ этот можно найти в  атрибуте  name  формы находящейся в html файле.
     # В нашем случае в файле reverse_test.html (атрибут формы name="usertexttest")
     
     # Для проверки, чтобы видеть получаем мы эту информацию или нет можно
     # написать следующую строку
-    test_get_text = request.GET['usertexttest']
-    print(test_get_text)
+   # test_get_text = request.GET['usertexttest']
+   # print(test_get_text)
     # Создаём переменную test_get_text и присвоим ей значение request.GET['usertexttest']
     # print выводит значение test_get_text на консоль
     #
     words = user_text.split() # Получаем список слов находящихся в переменной
     number_of_words = len(words) # Считаем количество слов
-    reverse_text = user_text[::-1]
+    reverse_text = user_text[::-1] # Разворачиваем строку наоборот
     return render(request,'reverse_test.html', {'usertext':user_text,'reversedtext':reverse_text,})
+# В фигурных скобках {} расположены две пары ключ-значение  
 
+# По первой паре 'usertext' мы будем получать информацию из переменной user_text. То есть каждый раз когда
+# мы будем ссылаться на этот ключ в нашем html файле мы будем получать этот текст. На html странице
+# нужно указать значение этого ключа в фигурных скобках {{usertext}}
 
-
-#
-#
-#
-
-#
+# Вторая пара 'reversedtext' работает аналогично, только значения другие
 #
 #
