@@ -24,6 +24,7 @@ from django.urls import path
 from.import views # То есть из той же папки где лежит файл urls.py импортируем views.py
 from django.conf import settings # Импортируем settings.py
 from django.conf.urls.static import static 
+import events.views 
 
 urlpatterns = [
     path('admin/', admin.site.urls), 
@@ -52,7 +53,7 @@ urlpatterns = [
 
     path('testtwo/', views.testtwo),
     path('home_test/', views.home_test),
-    path('', views.main_test), 
+   # path('', views.main_test), 
     path('reverse_test/', views.reverse_test),
- ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # Указываем где искать медиа-файлы
-# Эта строка используется для управления любыми медиа-файлами (видео, картинки, аудио) на нашем сайте
+     path('', events.views.home, name='home'),
+ ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

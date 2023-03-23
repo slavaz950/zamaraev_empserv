@@ -34,8 +34,7 @@ def testtwo (request):
 def home_test (request):
     return render(request, 'home_test.html')
 
-def main_test (request):
-    return render(request, 'main_test.html')
+
 
 def reverse_test(request):
     user_text = request.GET['usertexttest']  #  В [] указываем ключ параметра который мы ищем.
