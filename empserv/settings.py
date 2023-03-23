@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 # Определение приложения
 
 INSTALLED_APPS = [
+    'blog.apps.BlogConfig',
     'events.apps.EventsConfig',
     #'blog',
     'django.contrib.admin',
