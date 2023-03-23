@@ -22,11 +22,11 @@ Class-based views
 from django.contrib import admin
 from django.urls import path
 from.import views # То есть из той же папки где лежит файл urls.py импортируем views.py
+from django.conf import settings # Импортируем settings.py
+from django.conf.urls.static import static 
 
 urlpatterns = [
-    path('admin/', admin.site.urls), # Если в браузере набрать http://127.0.0.1:8000/admin
-    # то произойдёт переход в админ панель django. Как на любом веб-сайте
-   # ]
+    path('admin/', admin.site.urls), 
 
 # Здесь мы можем установить наши собственные пути 
 
@@ -54,4 +54,5 @@ urlpatterns = [
     path('home_test/', views.home_test),
     path('', views.main_test), 
     path('reverse_test/', views.reverse_test),
- ]
+ ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # Указываем где искать медиа-файлы
+# Эта строка используется для управления любыми медиа-файлами (видео, картинки, аудио) на нашем сайте

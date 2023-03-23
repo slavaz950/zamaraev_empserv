@@ -81,11 +81,20 @@ WSGI_APPLICATION = 'empserv.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
+       # 'ENGINE': 'django.db.backends.sqlite3',   # Настройки БД по умолчанию
+      #  'NAME': 'os.path.join(BASE_DIR, 'db.sqlite'),  # Настройки БД по умолчанию
+
+
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'empservdb',
+        'USER': 'postgres',
+        'PASSWORD': 'cen78ter19',
+       # 'HOST': 'http://127.0.0.1:8000', # Расположение БД, указываем адрес нашего сервера
+        'HOST': 'localhost', 
+        'PORT': '5432', # Порт БД
+}
+}
 
 # Проверка пароля
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -130,4 +139,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = BASE_DIR / 'media/'  # Основная папка для хранения файлов
 
-MEDIA_URL = '/media/' # 
+MEDIA_URL = '/empserv_media/' # Здесь указываем какое имя у папки будет отображаться
+# в адресной строке браузера при построении url-адреса. Имя MEDIA_ROOT 
+# не должно быть таким же как в MEDIA_URL
+#
+#
