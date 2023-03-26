@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 Полный список настроек и их значений см.
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+import os
 
 from pathlib import Path
 
@@ -131,14 +132,20 @@ USE_TZ = True
 # Статические файлы (CSS, JavaScript, Изображений)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+
+STATICFILES_DIRS = [  # Папки со статичными файлами
+    os.path.join(BASE_DIR, 'empserv/static/')
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # Основная папка для хранения файлов
 STATIC_URL = 'static/'
+
 
 # Тип поля первичного ключа по умолчанию
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_ROOT = BASE_DIR / 'media/'  # Основная папка для хранения файлов
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Основная папка для хранения файлов
 
 MEDIA_URL = '/empserv_media/' # Здесь указываем какое имя у папки будет отображаться
 # в адресной строке браузера при построении url-адреса. Имя MEDIA_ROOT 

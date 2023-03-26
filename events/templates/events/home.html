@@ -1,6 +1,9 @@
 
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
+{% load static %} <!-- Подключаем использование статических файлов
+эта строка должна быть написана до начала применения статических файлов -->
+
   <head><script src="/docs/5.3/assets/js/color-modes.js"></script>
 
     <meta charset="utf-8">
@@ -166,7 +169,7 @@ crossorigin="anonymous">
 
   <!-- ПАНЕЛЬ НАВИГАЦИИ  -->  
 <header >  <!-- data-bs-theme="dark" -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary"><!--   -->
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary"><!--   -->
     <div class="container-fluid">
       <a class="navbar-brand" href="#">MyEmployment Service</a>  <!-- Логотип  -->
 
@@ -184,7 +187,10 @@ crossorigin="anonymous">
 
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">О нас</a>
+          <a class="nav-link" aria-current="page" href="{% static 'AboutMe.txt' %}">О нас</a>
+          <!-- Ищет этот файл в папке со статическими файлами. Либо в "Загрузки" выводит либо на странице
+          в браузере его открывает -->
+
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">СоцСеть</a>
@@ -217,6 +223,9 @@ crossorigin="anonymous">
           <a href="mailto:slavazworld@mail.ru" class="btn btn-primary my-2">Написать мне</a>
    <!-- Клик по этой кнопке перенаправит нас в E-mail-клиент  -->       
         </p>
+
+        <img src="{% static 'ааааа5.jpg' %}"
+
       </div>
     </div>
   </section>

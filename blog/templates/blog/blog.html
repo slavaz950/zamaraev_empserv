@@ -161,7 +161,7 @@ crossorigin="anonymous">
 
   <!-- ПАНЕЛЬ НАВИГАЦИИ  -->  
 <header >  
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary"><!--   -->
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary"><!--   -->
     <div class="container-fluid">
       <a class="navbar-brand" href="#">MyEmployment Service</a>  <!-- Логотип  -->
 
@@ -182,7 +182,9 @@ crossorigin="anonymous">
           <a class="nav-link" href="#">СоцСеть</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Блог</a>
+          <a class="nav-link active" href="#">Блог</a>
+          <!-- Ставим для ссылки на эту страницу в меню active. Чтобы пользователь видел на какой странице
+        сайта находится в данный момент  -->
         </li>
         
       </ul>
@@ -191,40 +193,35 @@ crossorigin="anonymous">
 </nav>
 </header>
 
-<main>
+<main class='pl-5'>
+<!--  Класс pt-5 задаёт отступ сверху 5 единиц  -->
+<!--  Класс pb-5 задаёт отступ снизу 5 единиц  -->
+<!--  Класс pl-5 задаёт отступ слева 5 единиц  -->
+<!--  Отступы можно увеличивать и уменьшать заменой чисел   -->
+ <center><h1 class="pt-5 pb-5">Недавние посты</h1></center>
 
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Album example</h1>
-        <p class="lead text-body-secondary">
-          Что-то короткое и важное о коллекции ниже — ее содержании, создателе и т. д. 
-          Сделайте это кратким и приятным, но не слишком коротким, 
-          чтобы люди просто не пропустили его полностью.</p>
-        <p>
-          <a href="mailto:slavazworld@mail.ru" class="btn btn-primary my-2">Написать мне</a>
-   <!-- Клик по этой кнопке перенаправит нас в E-mail-клиент  -->       
-        </p>
-      </div>
-    </div>
-  </section>
+ {% for post in posts.all %}  <!-- Цикл.Выводит все посты из модели Posts   -->
+ <a href=""><h2>{{ post.title }}</h2></a> <!-- Вывод  заголовка поста (title)    -->
+ <!-- для того чтоб заголовок был кликабельным заключаем его в тег <a href="">  </a>  -->
+<br/>
+<img src="{{post.image.url}}" height=300 width="300" class="img-fluid">     <!--     -->
+<!-- (в фигурных скобках)Переменная цикла.Свойство модели.url фиксируем высоту изображения 300   -->
+<br/>
 
-    <!-- БЛОК С КОНТЕНТОМ  Только картинка и текст без кнопок и времени -->
-   
-  <div class="album py-5 bg-body-tertiary">
-    <div class="container">
+<!-- ВЫВОД ТЕКСТА ВСЕГО ПОСТА
+ <p>{{ post.text }}</p>  
+-->
+ <!-- Вывод содержимого свойства текст (text) модели Posts -->
+ 
+ <!-- ВЫВОД ТЕКСТА С ОГРАНИЧЕННЫМ КОЛИЧЕСТВОМ СИМВОЛОВ (до 70)
+используем функцию get_summary -->
+<p>{{ post.get_summary }}</p>
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {% for event in events.all %}  <!-- Получаем все объекты events -->
-        <div class="col">
-          <div class="card shadow-sm">
-           <img class="card-img-top" src="{{ event.event_image.url}}"/> <!-- Отображение картинки -->
-            <div class="card-body">
-              <p class="card-text">{{ event.events_text}}</p> <!-- Отображение текста на странице -->
-            </div>
-          </div>
-        </div>
-{% endfor %} <!-- Конец цикла  -->
+
+ {{ post.date }}       <!-- Выводим дату. Свойство (date) модели Posts -->
+<br/>
+<br/>
+ {% endfor%}  <!--  Завершение цикла   -->
 
 </main>
 

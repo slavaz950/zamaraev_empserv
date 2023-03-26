@@ -8,3 +8,6 @@ class Post (models.Model):
     text = models.TextField()  # Текстовое поле. Текстовый тип данных
     image = models.ImageField(upload_to='event_images/')  # Изображение
 
+    def get_summary(self): # Ограничивает вывод символов из свойства text до 70
+        return self.text[:70] # Выводит свойство text текущей модели 
+
