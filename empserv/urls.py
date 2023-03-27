@@ -13,11 +13,7 @@ Class-based views
     1. Импортируйте функцию include(): from django.urls import include, path
     2. Добавить URL-адрес в шаблоны URL-адресов:  path('blog/', include('blog.urls'))
 
-
-
 """
-
-"""  Comment  """
 
 from django.contrib import admin
 from django.urls import path, include
@@ -27,11 +23,11 @@ from django.conf.urls.static import static
 import events.views 
 
 urlpatterns = [
-    path('admin/', admin.site.urls), 
+    path('admin/', admin.site.urls),   # По умолчанию (доступ к Админке)
 
 # Здесь мы можем установить наши собственные пути 
 
-    path('testone/',views.testone),
+    path('testone/',views.testone),   # Данная строка не используется (приведна для примера)
     # Функция  path задаёт сопоставление определённого маршрута с соответствующей функцией 
     # обработки
     # Первым параметром определяем маршрут
@@ -43,17 +39,16 @@ urlpatterns = [
 # Нужно создать в этой же папке файл views.py (если его нет). Теперь здесь в urls.py мы должны  
 # импортировать views.py.
 
-
 # path() ограничена по своему действию. Запрошенный путь должен в точности соответствовать 
 # на странице указанному в маршруте адресу url. 
 
 # re_path() позволяет задавать адреса с помощью регулярных выражений
-#
-#
 
-    path('testtwo/', views.testtwo),
-    path('home_test/', views.home_test),
-   # path('', views.main_test), 
+    
+    path('home_test/', views.home_test, name='home_test'),  # Для тестирования наследования html
+
+    path('about_test/', views.about_test, name='about_test'),  # Для тестирования наследования html
+
     path('reverse_test/', views.reverse_test),
 
     path('posts/', include('blog.urls')), # Страница с постами. Обращаемся к urls.py из "Blog"
